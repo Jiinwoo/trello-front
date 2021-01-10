@@ -1,23 +1,24 @@
 import React from 'react'
+import SignupForm from '../components/organisms/SignupForm'
 import styled from 'styled-components'
-import LoginForm from '../components/organisms/LoginForm/LoginForm'
 
-function LoginPage() {
+function SignupPage() {
     return (
         <Wrapper>
-            <LoginForm />
+            <SignupForm />
         </Wrapper>
     )
 }
 
 const Wrapper = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
     &.fade-enter {
         opacity: 0;
-        z-index: 1;
     }
 
     &.fade-enter.fade-enter-active {
@@ -26,4 +27,4 @@ const Wrapper = styled.div`
     }
 `
 
-export default LoginPage
+export default SignupPage
