@@ -1,6 +1,5 @@
 import React from 'react'
 import { Alert, Button, Checkbox, Form, Input } from 'antd'
-import { history } from '../../../store'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import { Controller, useForm } from 'react-hook-form'
@@ -77,6 +76,13 @@ function LoginForm() {
                         로그인
                     </Button>
                     또는 <Link to={'/sign-up'}>가입하기</Link>
+                    <a
+                        href={
+                            'http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/oauth2/redirect'
+                        }
+                    >
+                        카카오 로그인하기
+                    </a>
                 </Form.Item>
             </Form>
             {error && (

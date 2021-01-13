@@ -7,6 +7,8 @@ import { history } from '../store'
 import Home from '../pages'
 import LoginPage from '../pages/login'
 import SignupPage from '../pages/signup'
+import PrivateRoute from './PrivateRoute'
+import OAuth2Redirect from './OAuth2Redirect'
 
 function AppRouter() {
     const location = useLocation()
@@ -14,10 +16,13 @@ function AppRouter() {
         <TransitionGroup>
             <CSSTransition timeout={100} classNames={'fade'} key={location.key}>
                 <Switch location={location}>
-                    <Route path={'/social/login/kakao'} />
+                    <Route
+                        path={'/oauth2/redirect'}
+                        component={OAuth2Redirect}
+                    />
                     <Route path={'/login'} component={LoginPage} />
                     <Route path={'/sign-up'} component={SignupPage} />
-                    <Route path={'/'} exact={true} component={Home} />
+                    <PrivateRoute path={'/'} exact={true} component={Home} />
                 </Switch>
             </CSSTransition>
         </TransitionGroup>

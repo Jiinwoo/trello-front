@@ -31,7 +31,9 @@ const memberSlice = createSlice({
         builder.addCase(createMemberActions.REQUEST, (draft) => {
             draft.error = undefined
         })
-        builder.addCase(createMemberActions.SUCCESS, (draft) => draft)
+        builder.addCase(createMemberActions.SUCCESS, (draft, action) => {
+            draft
+        })
         builder.addCase(createMemberActions.FAILURE, (draft, action) => {
             if (
                 action.payload.response &&
@@ -46,7 +48,9 @@ const memberSlice = createSlice({
         builder.addCase(authActions.REQUEST, (draft) => {
             draft.error = undefined
         })
-        builder.addCase(authActions.SUCCESS, (draft) => draft)
+        builder.addCase(authActions.SUCCESS, (draft, action) => {
+            window.sessionStorage.setItem('accessToken', action.payload.token)
+        })
         builder.addCase(authActions.FAILURE, (draft, action) => {
             if (
                 action.payload.response &&
