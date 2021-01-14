@@ -4,7 +4,7 @@ import { Switch, Route, useLocation } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { history } from '../store'
-import Home from '../pages'
+import HomePage from '../pages'
 import LoginPage from '../pages/login'
 import SignupPage from '../pages/signup'
 import PrivateRoute from './PrivateRoute'
@@ -22,7 +22,11 @@ function AppRouter() {
                     />
                     <Route path={'/login'} component={LoginPage} />
                     <Route path={'/sign-up'} component={SignupPage} />
-                    <PrivateRoute path={'/'} exact={true} component={Home} />
+                    <PrivateRoute
+                        path={'/'}
+                        exact={true}
+                        component={HomePage}
+                    />
                 </Switch>
             </CSSTransition>
         </TransitionGroup>
