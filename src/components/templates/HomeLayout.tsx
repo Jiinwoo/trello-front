@@ -1,47 +1,48 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Layout } from 'antd'
-import WebtoonCardList from '../organisms/WebtoonCardList'
+import { Col, Layout, Row } from 'antd'
 
-const { Header, Footer, Sider, Content: AntdContent } = Layout
+interface HomeLayoutProps {
+    header: React.ReactNode
+    children: React.ReactNode
+    footer: React.ReactNode
+    side: React.ReactNode
+}
 
-function HomeLayout() {
+function HomeLayout({ header, children, footer, side }: HomeLayoutProps) {
     return (
-        <Layout>
-            <Header></Header>
-            <InnerLayout>
-                <Content>asd</Content>
-                <Sider>
-                    <WebtoonCardList />
-                </Sider>
-            </InnerLayout>
-            <Footer></Footer>
-        </Layout>
+        <>
+            <HeaderRow>
+                <Col span={24}>{header}</Col>
+            </HeaderRow>
+            <ContentRow>
+                <Col sm={16} xs={24}>
+                    {children}
+                </Col>
+                <Col sm={8} xs={24}>
+                    {side}
+                </Col>
+            </ContentRow>
+            <FooterRow>
+                <Col>{footer}</Col>
+            </FooterRow>
+        </>
     )
 }
 
-const InnerLayout = styled(Layout)`
-    min-height: 100vh;
-    padding-top: 64px;
-    padding-bottom: 48px;
-    margin-top: -64px;
-    margin-bottom: -48px;
+const HeaderRow = styled(Row)`
+    height: 40px;
 `
 
-const Content = styled(AntdContent)`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    &.fade-enter {
-        opacity: 0;
-    }
-
-    &.fade-enter.fade-enter-active {
-        opacity: 1;
-        transition: opacity 1s ease-in;
-    }
+const ContentRow = styled(Row)`
+    min-height: 100vh;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: -40px;
+    margin-bottom: 40px;
+`
+const FooterRow = styled(Row)`
+    height: 40px;
 `
 
 export default HomeLayout
