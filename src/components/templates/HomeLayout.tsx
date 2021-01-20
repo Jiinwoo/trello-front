@@ -19,9 +19,7 @@ function HomeLayout({ header, children, footer, side }: HomeLayoutProps) {
                 <Col sm={16} xs={24}>
                     {children}
                 </Col>
-                <Col sm={8} xs={24}>
-                    {side}
-                </Col>
+                <Aside>{side}</Aside>
             </ContentRow>
             <FooterRow>
                 <Col>{footer}</Col>
@@ -40,9 +38,19 @@ const ContentRow = styled(Row)`
     padding-bottom: 40px;
     margin-top: -40px;
     margin-bottom: 40px;
+    position: relative;
+    overflow-x: hidden;
 `
 const FooterRow = styled(Row)`
     height: 40px;
+`
+
+const Aside = styled.div`
+    position: fixed;
+    right: 0;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
 `
 
 export default HomeLayout
